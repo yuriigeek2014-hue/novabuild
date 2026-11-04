@@ -6,6 +6,8 @@
     <title>Document</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/3.0.1/modern-normalize.min.css" integrity="sha512-q6WgHqiHlKyOqslT/lgBgodhd03Wp4BEqKeW6nNtlOY4quzyG3VoQKFrieaCeSnuVseNKRGpGeDU3qPmabCANg==" crossorigin="anonymous" referrerpolicy="no-referrer">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
     <link rel="stylesheet" href="./custom.css">
 </head>
 <body>
@@ -60,12 +62,13 @@
         <section
             class="hero-section d-flex align-items-center bg-dark text-white py-5"
             id="hero"
+            data-aos="fade-up"
             >
             <div class="container">
                 <div class="row align-items-center g-5">
 
                 <!-- Лівий блок — текст -->
-                <div class="col-lg-6 order-2 order-lg-1">
+                <div class="col-lg-6 order-2 order-lg-1 animate__animated animate__fadeInLeft">
                     <span class="badge bg-primary bg-opacity-25 text-primary-emphasis mb-3 px-3 py-2">
                     🚀 Топ агентство 2024
                     </span>
@@ -108,7 +111,7 @@
                 </div>
 
                 <!-- Правий блок — зображення -->
-                <div class="col-lg-6 order-1 order-lg-2 text-center">
+                <div class="col-lg-6 order-1 order-lg-2 text-center animate__animated animate__fadeInRight">
                     <img
                     src="https://placehold.co/560x400/0d6efd/ffffff?text=Your+Website"
                     class="img-fluid rounded-4 shadow-lg"
@@ -123,7 +126,7 @@
                 </div>
             </div>
             </section>
-            <section class="py-5 bg-light" id="features">
+            <section class="py-5 bg-light" id="features" data-aos="fade-up">
             <div class="container">
 
                 <!-- Заголовок секції -->
@@ -298,7 +301,7 @@
                 </div>
             </div>
             </section>
-            <section class="py-5 bg-light" id="faq">
+            <section class="py-5 bg-light" id="faq" data-aos="fade-up">
             <div class="container">
                 <div class="row justify-content-center">
                 <div class="col-lg-8">
@@ -439,64 +442,155 @@
                 </div>
             </div>
             </section>
-            <!-- Модальне вікно -- розміщується перед </body> -->
             <div class="modal fade" id="contactModal" tabindex="-1">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
 
-                <div class="modal-header border-0 pb-0">
-                    <h5 class="modal-title fw-bold fs-4">
-                    Замовити проєкт 🚀
-                    </h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        <div class="modal-header border-0 pb-0">
+                            <h5 class="modal-title fw-bold fs-4">
+                                Замовити проєкт 🚀
+                            </h5>
+
+                            <button
+                                type="button"
+                                class="btn-close"
+                                data-bs-dismiss="modal"
+                                aria-label="Close">
+                            </button>
+                        </div>
+
+                        <div class="modal-body px-4 pt-3">
+
+                            <form id="contactForm" novalidate>
+
+                                <div class="mb-3">
+                                    <label for="cName" class="form-label fw-semibold">
+                                        Ваше ім'я
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        class="form-control form-control-lg"
+                                        id="cName"
+                                        placeholder="Іван Петренко"
+                                        required>
+
+                                    <div class="invalid-feedback">
+                                        Будь ласка, введіть ім'я
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="cEmail" class="form-label fw-semibold">
+                                        Email
+                                    </label>
+
+                                    <input
+                                        type="email"
+                                        class="form-control form-control-lg"
+                                        id="cEmail"
+                                        placeholder="ivan@example.com"
+                                        required>
+
+                                    <div class="invalid-feedback">
+                                        Введіть коректний email
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="cBudget" class="form-label fw-semibold">
+                                        Тариф
+                                    </label>
+
+                                    <select
+                                        class="form-select form-select-lg"
+                                        id="cBudget"
+                                        required>
+
+                                        <option value="">Оберіть...</option>
+                                        <option>Starter — $499</option>
+                                        <option>Pro — $1299</option>
+                                        <option>Enterprise — $2499</option>
+
+                                    </select>
+
+                                    <div class="invalid-feedback">
+                                        Оберіть тариф
+                                    </div>
+                                </div>
+
+                                <div class="mb-4">
+                                    <label for="cMessage" class="form-label fw-semibold">
+                                        Опис проєкту
+                                    </label>
+
+                                    <textarea
+                                        class="form-control"
+                                        id="cMessage"
+                                        rows="3"
+                                        placeholder="Розкажіть про свій проєкт...">
+                                    </textarea>
+                                </div>
+
+                                <button
+                                    type="submit"
+                                    id="submitBtn"
+                                    class="btn btn-primary btn-lg w-100">
+
+                                    Відправити заявку
+
+                                </button>
+
+                            </form>
+
+                            <!-- LOTTIE LOADER -->
+                            <div id="loadingAnimation" class="text-center d-none">
+
+                                <lottie-player
+                                    src="https://assets10.lottiefiles.com/packages/lf20_usmfx6bp.json"
+                                    background="transparent"
+                                    speed="1"
+                                    style="width: 180px; height: 180px; margin: auto;"
+                                    autoplay>
+                                </lottie-player>
+
+                                <p class="text-muted">
+                                    Завантаження...
+                                </p>
+
+                            </div>
+
+                            <!-- SUCCESS MESSAGE -->
+                            <div id="successMessage" class="text-center d-none">
+
+                                <div class="display-4 mb-3">🎉</div>
+
+                                <h3 class="fw-bold text-success">
+                                    Дякуємо!
+                                </h3>
+
+                                <p class="text-muted">
+                                    Ваша заявка успішно відправлена!
+                                </p>
+
+                                <button
+                                    type="button"
+                                    class="btn btn-primary mt-3"
+                                    data-bs-dismiss="modal">
+
+                                    Закрити
+
+                                </button>
+
+                            </div>
+
+                        </div>
+                    </div>
                 </div>
-
-                <div class="modal-body px-4 pt-3">
-                    <form class="needs-validation" novalidate>
-
-                    <div class="mb-3">
-                        <label for="cName" class="form-label fw-semibold">Ваше ім'я</label>
-                        <input type="text" class="form-control form-control-lg" id="cName"
-                            placeholder="Іван Петренко" required>
-                        <div class="invalid-feedback">Будь ласка, введіть ім'я</div>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="cEmail" class="form-label fw-semibold">Email</label>
-                        <input type="email" class="form-control form-control-lg" id="cEmail"
-                            placeholder="ivan@example.com" required>
-                        <div class="invalid-feedback">Введіть коректний email</div>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="cBudget" class="form-label fw-semibold">Тариф</label>
-                        <select class="form-select form-select-lg" id="cBudget" required>
-                        <option value="">Оберіть...</option>
-                        <option>Starter — $499</option>
-                        <option>Pro — $1299</option>
-                        <option>Enterprise — $2499</option>
-                        </select>
-                    </div>
-
-                    <div class="mb-4">
-                        <label for="cMessage" class="form-label fw-semibold">Опис проєкту</label>
-                        <textarea class="form-control" id="cMessage" rows="3"
-                                placeholder="Розкажіть про свій проєкт..."></textarea>
-                    </div>
-
-                    <button type="submit" class="btn btn-primary btn-lg w-100">
-                        Відправити заявку
-                    </button>
-
-                    </form>
-                </div>
-
-                </div>
-            </div>
             </div>
     </main>
     <!-- FOOTER -->
-            <footer class="bg-dark text-white py-5">
+            <footer class="bg-dark text-white py-5" data-aos="fade-up">
             <div class="container">
                 <div class="row g-4">
                 <div class="col-md-4">
@@ -525,5 +619,65 @@
         </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
+    <script>
+        AOS.init({
+            duration: 700,
+            easing: 'ease-out-cubic',
+            once: true,
+            offset: 80
+        });
+
+        const contactForm = document.getElementById('contactForm');
+
+        const submitBtn = document.getElementById('submitBtn');
+
+        const loadingAnimation = document.getElementById('loadingAnimation');
+
+        const successMessage = document.getElementById('successMessage');
+
+        const contactModal = document.getElementById('contactModal');
+
+        contactForm.addEventListener('submit', function(event) {
+
+            event.preventDefault();
+
+            if (!contactForm.checkValidity()) {
+
+                contactForm.classList.add('was-validated');
+
+                return;
+            }
+
+            contactForm.classList.add('d-none');
+
+            loadingAnimation.classList.remove('d-none');
+
+            setTimeout(function() {
+
+                loadingAnimation.classList.add('d-none');
+
+                successMessage.classList.remove('d-none');
+
+            }, 2000);
+
+        });
+
+        contactModal.addEventListener('hidden.bs.modal', function() {
+
+            contactForm.reset();
+
+            contactForm.classList.remove('d-none', 'was-validated');
+
+            loadingAnimation.classList.add('d-none');
+
+            successMessage.classList.add('d-none');
+
+        });
+    </script>
 </body>
 </html>
